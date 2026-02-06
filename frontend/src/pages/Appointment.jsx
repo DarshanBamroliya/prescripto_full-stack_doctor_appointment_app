@@ -165,8 +165,8 @@ const Appointment = () => {
                 <div className='flex gap-3 items-center w-full overflow-x-scroll mt-4'>
                     {docSlots.length && docSlots.map((item, index) => (
                         <div onClick={() => setSlotIndex(index)} key={index} className={`text-center py-6 min-w-16 rounded-full cursor-pointer ${slotIndex === index ? 'bg-primary text-white' : 'border border-[#DDDDDD]'}`}>
-                            <p>{item[0] && daysOfWeek[item[0].datetime.getDay()]}</p>
-                            <p>{item[0] && item[0].datetime.getDate()}</p>
+                            <p>{daysOfWeek[(new Date().getDay() + index) % 7]}</p>
+                            <p>{new Date(new Date().setDate(new Date().getDate() + index)).getDate()}</p>
                         </div>
                     ))}
                 </div>
