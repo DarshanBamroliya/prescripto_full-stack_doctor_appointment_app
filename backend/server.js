@@ -16,7 +16,7 @@ connectCloudinary()
 // middlewares
 app.use(express.json())
 app.use(cors({
-  origin: ['http://localhost:5173', 'http://localhost:5174'],
+  origin: ['http://localhost:5173', 'http://localhost:5174', 'https://prescripto.netlify.app'],
   credentials: true
 }))
 
@@ -29,7 +29,7 @@ app.get("/", (req, res) => {
   res.send("API Working")
 });
 
-if (!process.env.VERCEL) {
+if (!process.env.VERCEL && !process.env.NETLIFY) {
   app.listen(port, () => console.log(`Server started on PORT:${port}`))
 }
 
